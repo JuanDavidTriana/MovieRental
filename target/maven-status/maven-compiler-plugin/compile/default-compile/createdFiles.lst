@@ -1,0 +1,7 @@
+beans\Peliculas.class
+beans\Usuario.class
+servelts\PruebaServelt.class
+beans\Alquiler.class
+servelts\ServeltTest.class
+test\OperacionesBD.class
+connection\DBConnection.class
