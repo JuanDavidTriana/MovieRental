@@ -40,7 +40,6 @@ function autenticarUsuario() {
         }
     });
 }
-
 function registrarUsuario() {
 
     let username = $("#input-username").val();
@@ -51,8 +50,9 @@ function registrarUsuario() {
     let email = $("#input-email").val();
     let saldo = $("#input-saldo").val();
     let premium = $("#input-premium").prop("checked");
-    
-    if (contrasena === contrasenaConfirmacion) {
+
+    if (contrasena == contrasenaConfirmacion) {
+
         $.ajax({
             type: "GET",
             dataType: "html",
@@ -68,7 +68,8 @@ function registrarUsuario() {
             }),
             success: function (result) {
                 let parsedResult = JSON.parse(result);
-                if (parsedResult !== false) {
+
+                if (parsedResult != false) {
                     $("#register-error").addClass("d-none");
                     let username = parsedResult['username'];
                     document.location.href = "home.html?username=" + username;
