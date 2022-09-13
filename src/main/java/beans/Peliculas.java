@@ -71,6 +71,6 @@ public class Peliculas {
         return "Peliculas{" + "id=" + id + ", titulo=" + titulo + ", genero=" + genero 
                 + ", autor=" + autor + ", copias=" + copias + ", novedad=" + novedad + '}';
     }
-    
-    
+
+   
 }

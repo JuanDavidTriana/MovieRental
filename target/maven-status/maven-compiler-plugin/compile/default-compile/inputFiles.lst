@@ -2,10 +2,14 @@ C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\connection
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\servlets\ServletUsuarioLogin.java
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\beans\Usuario.java
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\servlets\ServletUsuarioRegister.java
-C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\controller\UsuarioController.java
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\test\OperacionesBD.java
-C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\beans\Alquiler.java
-C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\controller\IUsuarioController.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\servlets\ServletUsuarioPedir.java
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\servlets\PruebaServelt.java
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\servlets\ServeltTest.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\controller\PeliculaController.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\controller\IPeliculaController.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\servlets\ServletPeliculaListar.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\controller\UsuarioController.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\beans\Alquiler.java
+C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\controller\IUsuarioController.java
 C:\Users\Juan David Triana\Documents\GitHub\MovieRental\src\main\java\beans\Peliculas.java
