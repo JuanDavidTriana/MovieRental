@@ -12,6 +12,8 @@ $(document).ready(function () {
         $("#user-saldo").html(user.saldo.toFixed(2) + "$");
 
         getPeliculas(false, "ASC");
+        
+        $("#ordenar-genero").click(ordenarPeliculas);
     });
 });
 
@@ -105,4 +107,21 @@ function mostrarPeliculas(peliculas) {
         }
     });
     $("#peliculas-tbody").html(contenido);
+}
+
+function ordenarPeliculas(){
+	
+	if ($("#icono-ordenar").hasClass("fa-sort")) {
+                getPeliculas(true, "ASC");
+		$("#icono-ordenar").removeClass("fa-sort");
+		$("#icono-ordenar").addClass("fa-sort-down");
+	} else if ($("#icono-ordenar").hasClass("fa-sort-down")) {
+		getPeliculas(true, "DESC");
+		$("#icono-ordenar").removeClass("fa-sort-down");
+		$("#icono-ordenar").addClass("fa-sort-up");
+	} else if ($("#icono-ordenar").hasClass("fa-sort-up")) {
+		getPeliculas(false, "ASC");
+		$("#icono-ordenar").removeClass("fa-sort-up");
+		$("#icono-ordenar").addClass("fa-sort");
+	}
 }

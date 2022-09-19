@@ -2,9 +2,7 @@ package controller;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -54,7 +52,7 @@ public class PeliculaController implements IPeliculaController {
             con.desconectar();
         }
 
-        return gson.toJson(peliculas);
+        return gson.toJson(peliculas    );
 
     }
 
