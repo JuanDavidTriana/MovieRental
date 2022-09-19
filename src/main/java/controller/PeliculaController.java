@@ -2,14 +2,14 @@ package controller;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gson.Gson;
-
 import beans.Peliculas;
 import connection.DBConnection;
-
 
 public class PeliculaController implements IPeliculaController {
 
@@ -52,7 +52,53 @@ public class PeliculaController implements IPeliculaController {
             con.desconectar();
         }
 
-        return gson.toJson(peliculas    );
+        return gson.toJson(peliculas);
+
+    }
+
+    @Override
+    public String alquilar(int id, String username) {
+
+        Timestamp fecha = new Timestamp(new Date().getTime());
+        DBConnection con = new DBConnection();
+        String sql = "Insert into alquiler values ('" + id + "', '" + username + "', '" + fecha + "')";
+
+        try {
+            Statement st = con.getConnection().createStatement();
+            st.executeUpdate(sql);
+
+            String modificar = modificar(id);
+
+            if (modificar.equals("true")) {
+                return "true";
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        } finally {
+            con.desconectar();
+        }
+        return "false";
+    }
+
+    @Override
+    public String modificar(int id) {
+
+        DBConnection con = new DBConnection();
+        String sql = "Update peliculas set copias = (copias - 1) where id = " + id;
+
+        try {
+            Statement st = con.getConnection().createStatement();
+            st.executeUpdate(sql);
+
+            return "true";
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        } finally {
+            con.desconectar();
+        }
+
+        return "false";
 
     }
 
