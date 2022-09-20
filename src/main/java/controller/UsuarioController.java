@@ -2,8 +2,10 @@ package controller;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.google.gson.Gson;
 import beans.Usuario;
 import connection.DBConnection;
 
@@ -106,8 +108,8 @@ public class UsuarioController implements IUsuarioController {
 
         return "false";
     }
-    
-     @Override
+
+    @Override
     public String restarDinero(String username, double nuevoSaldo) {
 
         DBConnection con = new DBConnection();
@@ -117,6 +119,125 @@ public class UsuarioController implements IUsuarioController {
 
             Statement st = con.getConnection().createStatement();
             st.executeUpdate(sql);
+
+            return "true";
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            con.desconectar();
+        }
+
+        return "false";
+    }
+
+    @Override
+    public String modificar(String username, String nuevaContrasena, 
+            String nuevoNombre, String nuevosApellidos,
+            String nuevoEmail, double nuevoSaldo, boolean nuevoPremium) {   
+
+        DBConnection con = new DBConnection();
+
+        String sql = "Update usuarios set contrasena = '" + nuevaContrasena +
+                "', nombre = '" + nuevoNombre + "', "
+                + "apellidos = '" + nuevosApellidos + "', email = '" 
+                + nuevoEmail + "', saldo = " + nuevoSaldo + ", premium = ";
+
+        if (nuevoPremium == true) {
+            sql += " 1 ";
+        } else {
+            sql += " 0 ";
+        }
+
+        sql += " where username = '" + username + "'";
+
+        try {
+
+            Statement st = con.getConnection().createStatement();
+            st.executeUpdate(sql);
+
+            return "true";
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            con.desconectar();
+        }
+
+        return "false";
+
+    }
+
+    @Override
+    public String verCopias(String username) {
+
+        DBConnection con = new DBConnection();
+        String sql = "Select id,count(*) as num_copias from alquiler where username = '" 
+                + username + "' group by id;";
+
+        Map<Integer, Integer> copias = new HashMap<Integer, Integer>();
+
+        try {
+
+            Statement st = con.getConnection().createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int num_copias = rs.getInt("num_copias");
+
+                copias.put(id, num_copias);
+            }
+
+            devolverPeliculas(username, copias);
+
+            return "true";
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            con.desconectar();
+        }
+
+        return "false";
+
+    }
+
+    @Override
+    public String devolverPeliculas(String username, Map<Integer, Integer> copias) {
+
+        DBConnection con = new DBConnection();
+
+        try {
+            for (Map.Entry<Integer, Integer> pelicula : copias.entrySet()) {
+                int id = pelicula.getKey();
+                int num_copias = pelicula.getValue();
+
+                String sql = "Update peliculas set copias = (Select copias + " + num_copias +
+                        " from peliculas where id = " + id + ") where id = " + id;
+
+                Statement st = con.getConnection().createStatement();
+                st.executeUpdate(sql);
+
+            }
+
+            this.eliminar(username);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return "false";
+    }
+
+    public String eliminar(String username) {
+
+        DBConnection con = new DBConnection();
+
+        String sql1 = "Delete from alquiler where username = '" + username + "'";
+        String sql2 = "Delete from usuarios where username = '" + username + "'";
+
+        try {
+            Statement st = con.getConnection().createStatement();
+            st.executeUpdate(sql1);
+            st.executeUpdate(sql2);
 
             return "true";
         } catch (Exception ex) {

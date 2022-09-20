@@ -13,4 +13,14 @@ public interface IUsuarioController {
 
     public String restarDinero(String username, double nuevoSaldo);
 
+    public String modificar(String username, String nuevaContrasena, 
+            String nuevoNombre, String nuevosApellidos, String nuevoEmail, 
+            double nuevoSaldo, boolean nuevoPremium);
+
+    public String verCopias(String username);
+
+    public String devolverPeliculas(String username, Map<Integer, Integer> copias);
+
+    public String eliminar(String username);
+
 }

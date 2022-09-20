@@ -8,4 +8,8 @@ public interface IPeliculaController {
 
     public String modificar(int id);
 
+    public String devolver(int id, String username);
+
+    public String sumarCantidad(int id);
+
 }
