@@ -35,7 +35,7 @@ function autenticarUsuario() {
                 let username = parsedResult['username'];
                 document.location.href = "home.html?username=" + username;
             } else {
-                $("#login-error").removeClass("d-none");
+                    $("#login-error").removeClass("d-none");
             }
         }
     });

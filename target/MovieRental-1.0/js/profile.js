@@ -65,14 +65,14 @@ function getAlquiladas(username) {
         dataType: "html",
         url: "./ServletAlquilerListar",
         data: $.param({
-            username: username,
+            username: username
         }),
         success: function (result) {
             let parsedResult = JSON.parse(result);
 
             if (parsedResult != false) {
 
-                mostrarHistorial(parsedResult)
+                mostrarHistorial(parsedResult);
 
             } else {
                 console.log("Error recuperando los datos de las reservas");
@@ -90,13 +90,13 @@ function mostrarHistorial(peliculas) {
             contenido += '<tr><th scope="row">' + pelicula.id + '</th>' +
                     '<td>' + pelicula.titulo + '</td>' +
                     '<td>' + pelicula.genero + '</td>' +
-                    '<td><input type="checkbox" name="novedad" id="novedad' + pelicula.id 
+                    '<td><input type="checkbox" name="novedad" id="novedad' + pelicula.id
                     + '" disabled ';
             if (pelicula.novedad) {
                 contenido += 'checked'
             }
             contenido += '></td><td>' + pelicula.fechaAlquiler + '</td>' +
-                    '<td><button id="devolver-btn" onclick= "devolverpelicula(' + pelicula.id 
+                    '<td><button id="devolver-btn" onclick= "devolverpelicula(' + pelicula.id
                     + ');" class="btn btn-danger">Devolver pelicula</button></td></tr>';
 
         });
