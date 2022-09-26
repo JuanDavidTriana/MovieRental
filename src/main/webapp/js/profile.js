@@ -96,7 +96,7 @@ function mostrarHistorial(peliculas) {
                 contenido += 'checked'
             }
             contenido += '></td><td>' + pelicula.fechaAlquiler + '</td>' +
-                    '<td><button id="devolver-btn" onclick= "devolverpelicula(' + pelicula.id
+                    '<td><button id="devolver-btn" onclick= "devolverPelicula(' + pelicula.id
                     + ');" class="btn btn-danger">Devolver pelicula</button></td></tr>';
 
         });
