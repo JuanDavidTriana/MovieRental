@@ -1,4 +1,4 @@
-var username = new URL(location.href).searchParams.get("username");
+    var username = new URL(location.href).searchParams.get("username");
 var user;
 
 $(document).ready(function () {
